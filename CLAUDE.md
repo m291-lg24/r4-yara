@@ -1,27 +1,63 @@
-# Projektregeln für KI-Assistenten
+# CLAUDE.md – Projektregeln
 
-Dieses Projekt entsteht im Modul 291 (SBW Neue Medien). Halte dich an diese Regeln, bevor du Code vorschlägst oder änderst.
+Lies vor jeder Arbeit zuerst:
 
-## Technik (nicht ändern ohne Rückfrage)
-- Vue 3 mit Composition API und `<script setup>`, JavaScript (kein TypeScript)
-- Tailwind CSS 4 (Konfiguration in `src/style.css` via `@theme`, keine `tailwind.config.js`)
-- Vue Router im History-Modus, Routen in `src/router/index.js`
-- Pinia mit Setup-Stores in `src/stores/`
-- Reines Frontend: kein eigenes Backend, keine Datenbank
-- Keine zusätzlichen npm-Pakete ohne Begründung
+1. `AGENTS.md`
+2. `PROJECT.md`
 
-## Struktur
-- Seiten: `src/views/` (`PascalCaseView.vue`), Bausteine: `src/components/` (`PascalCase.vue`)
-- Statische Dateien (Bilder, Fonts): `public/` oder `src/assets/`
+`PROJECT.md` enthält die fachliche Spezifikation.
 
-## Konventionen
-- Sprache der Oberfläche: Deutsch (Schweizer Rechtschreibung, «ss» statt «ß»)
-- Barrierefreiheit: jedes Eingabefeld mit `<label>`, Buttons mit verständlichem Text
-- Animationen respektieren `prefers-reduced-motion`
+`AGENTS.md` enthält die technischen und organisatorischen Regeln.
+
+## Technik
+
+- Vue 3
+- Composition API
+- `<script setup>`
+- JavaScript
+- Vite
+- Tailwind CSS 4
+- Vue Router
+- Pinia
+- PHP
+- MariaDB
+- OpenLigaDB
+
+Keine zusätzlichen npm-Pakete ohne Rückfrage.
+
+## Arbeitsweise
+
+- zuerst bestehenden Code lesen
+- `PROJECT.md` beachten
+- kleine Schritte
+- User Story für User Story
+- keine ungefragten Zusatzfeatures
+- nach Frontend-Änderungen `npm run build`
+
+## Oberfläche
+
+- Deutsch
+- Schweizer Rechtschreibung
+- Anthrazit-&-Lime-Design gemäss `PROJECT.md`
+- zentrale Design-Tokens
+- responsive ab 360 px
+- sichtbare Labels
+- sichtbare Fokuszustände
+- Status nie nur über Farbe
+- `prefers-reduced-motion` beachten
 
 ## Sicherheit
-- Keine Geheimnisse in `VITE_`-Variablen oder im Code
-- `.env.deploy` nie committen
+
+- keine `.env`-Geheimnisse ausgeben
+- `.env.deploy` nicht verändern
+- `api/.env` nicht verändern
+- keine Passwörter oder Zugangsdaten committen
+- Deployment nur auf ausdrückliche Anweisung
 
 ## Befehle
-- `npm run dev` / `npm run build` / `npm run deploy`
+
+- `npm run dev`
+- `npm run build`
+- `npm run preview`
+- `npm run deploy:check`
+- `npm run deploy` nur auf ausdrückliche Anweisung
