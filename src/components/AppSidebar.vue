@@ -13,20 +13,10 @@ const navigation = [
 </script>
 
 <template>
-  <aside
-    class="fixed inset-y-0 left-0 hidden w-64 flex-col bg-primary px-4 py-6 text-white md:flex"
-  >
-    <RouterLink
-      to="/"
-      class="mb-10 rounded-lg px-3 py-2 focus-visible:outline-accent"
-    >
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-        Matchday
-      </p>
-
-      <p class="text-xl font-bold">
-        Content Planner
-      </p>
+  <aside class="fixed inset-y-0 left-0 hidden w-64 flex-col bg-primary px-4 py-6 text-white md:flex">
+    <RouterLink to="/" class="mb-8 rounded-lg px-3 py-2">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">Matchday</p>
+      <p class="text-xl font-bold">Content Planner</p>
     </RouterLink>
 
     <nav aria-label="Hauptnavigation" class="flex flex-1 flex-col gap-1">
@@ -43,7 +33,7 @@ const navigation = [
 
     <RouterLink
       to="/about"
-      class="rounded-lg px-4 py-3 text-sm text-zinc-400 hover:bg-secondary hover:text-white"
+      class="rounded-lg px-4 py-3 text-sm text-zinc-400 transition hover:bg-secondary hover:text-white"
       active-class="bg-accent !text-primary"
     >
       Über & Datenschutz

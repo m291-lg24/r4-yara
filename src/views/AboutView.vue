@@ -1,11 +1,61 @@
 <template>
-  <section>
-    <h2 class="text-3xl font-bold text-primary">
-      Matches
-    </h2>
+  <div class="mx-auto max-w-4xl space-y-6">
+    <section>
+      <p class="text-sm font-semibold text-muted">Projekt</p>
+      <h2 class="mt-1 text-3xl font-bold text-primary">Über & Datenschutz</h2>
+      <p class="mt-2 text-muted">Informationen zum Matchday Content Planner und zur Verarbeitung von Daten.</p>
+    </section>
 
-    <p class="mt-2 text-zinc-600">
-      Diese Seite wird im nächsten Schritt umgesetzt.
-    </p>
-  </section>
+    <section class="rounded-2xl border border-border bg-surface p-6 shadow-sm">
+      <h3 class="text-xl font-bold text-primary">Matchday Content Planner</h3>
+      <p class="mt-3 leading-7 text-zinc-600">
+        Die Anwendung unterstützt Content-Teams von Fussballvereinen bei der Planung von Matchdays.
+        Matches, Content-Aufgaben, Status und Fortschritt werden an einem Ort verwaltet.
+      </p>
+    </section>
+
+    <section class="rounded-2xl border border-border bg-surface p-6 shadow-sm">
+      <h3 class="text-xl font-bold text-primary">Datenschutzhinweis</h3>
+
+      <div class="mt-4 space-y-5 text-sm leading-6 text-zinc-600">
+        <div>
+          <h4 class="font-bold text-primary">Gespeicherte Daten</h4>
+          <p class="mt-1">
+            Die eigene PHP-API speichert Matchdaten, Content-Aufgaben und Vorlagen in MariaDB.
+            Die Formulare erfassen keine Passwörter und keine besonders schützenswerten Personendaten.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-primary">Lokale Einstellungen</h4>
+          <p class="mt-1">
+            Einstellungen wie Vereinsname oder Darstellungspräferenzen werden im Local Storage des Browsers gespeichert.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-primary">Externer Dienst</h4>
+          <p class="mt-1">
+            Für den Import von Spieldaten wird OpenLigaDB verwendet. Der Abruf läuft über die eigene PHP-API.
+            Übermittelt werden die gewählte Liga und Saison. Es wird kein API-Schlüssel verwendet.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-primary">Speicherdauer und Zugriff</h4>
+          <p class="mt-1">
+            Projektdaten bleiben in der Kursdatenbank gespeichert, bis sie durch die Projektverantwortliche
+            oder die Kursleitung gelöscht werden. Zugriff auf die Datenbank haben nur die berechtigten Kurszugänge.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rounded-2xl border border-border bg-surface p-6 shadow-sm">
+      <h3 class="text-xl font-bold text-primary">Technik</h3>
+      <p class="mt-3 text-sm leading-6 text-zinc-600">
+        Vue 3, Vue Router, Pinia, Tailwind CSS 4, Vite, PHP, MariaDB und OpenLigaDB.
+      </p>
+    </section>
+  </div>
 </template>

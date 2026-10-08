@@ -12,14 +12,14 @@ const navigation = [
 <template>
   <nav
     aria-label="Mobile Navigation"
-    class="fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 border-t border-zinc-200 bg-surface md:hidden"
+    class="fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 border-t border-border bg-surface md:hidden"
   >
     <RouterLink
       v-for="item in navigation"
       :key="item.to"
       :to="item.to"
-      class="flex min-h-16 items-center justify-center px-2 text-center text-xs font-medium text-zinc-500"
-      active-class="bg-accent text-primary"
+      class="flex min-h-16 items-center justify-center px-2 text-center text-xs font-medium text-muted"
+      active-class="bg-accent !text-primary"
     >
       {{ item.label }}
     </RouterLink>
