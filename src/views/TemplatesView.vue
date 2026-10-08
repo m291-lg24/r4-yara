@@ -9,6 +9,7 @@ const { templates, loading, error } = storeToRefs(store)
 
 const form = reactive({ name: '', description: '' })
 const formError = ref('')
+const submitError = ref('')
 const success = ref('')
 const saving = ref(false)
 
@@ -16,6 +17,7 @@ onMounted(() => store.loadAll())
 
 async function submit() {
   formError.value = ''
+  submitError.value = ''
   success.value = ''
 
   if (!form.name.trim()) {
@@ -30,7 +32,7 @@ async function submit() {
     form.name = ''
     form.description = ''
   } catch (err) {
-    formError.value = err.message || 'Vorlage konnte nicht gespeichert werden.'
+    submitError.value = err.message || 'Vorlage konnte nicht gespeichert werden.'
   } finally {
     saving.value = false
   }
@@ -48,17 +50,23 @@ async function submit() {
     <AppAlert v-if="error" type="error" :message="error" />
 
     <section class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-      <form class="rounded-2xl border border-border bg-surface p-6 shadow-sm" @submit.prevent="submit">
+      <form class="rounded-2xl border border-border bg-surface p-6 shadow-sm" novalidate @submit.prevent="submit">
         <h3 class="text-lg font-bold text-primary">Neue Vorlage</h3>
 
         <Transition name="fade">
           <AppAlert v-if="success" class="mt-4" type="success" :message="success" />
         </Transition>
-        <AppAlert v-if="formError" class="mt-4" type="error" :message="formError" />
+        <AppAlert v-if="submitError" class="mt-4" type="error" :message="submitError" />
 
         <label class="mt-5 block">
           <span class="text-sm font-semibold text-primary">Name *</span>
-          <input v-model="form.name" type="text" class="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5" />
+          <input
+            v-model="form.name"
+            type="text"
+            class="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5"
+            :aria-invalid="Boolean(formError)"
+          />
+          <span v-if="formError" class="mt-1 block text-sm text-red-700">{{ formError }}</span>
         </label>
 
         <label class="mt-4 block">

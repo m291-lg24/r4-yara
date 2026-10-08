@@ -23,6 +23,13 @@ const filteredTasks = computed(() =>
   }),
 )
 
+const hasActiveFilter = computed(() => category.value !== 'Alle' || status.value !== 'Alle')
+
+function resetFilters() {
+  category.value = 'Alle'
+  status.value = 'Alle'
+}
+
 function matchName(matchId) {
   const match = matches.value.find((item) => item.id === matchId)
   return match ? `${match.homeTeam} – ${match.awayTeam}` : 'Unbekanntes Match'
@@ -65,6 +72,27 @@ async function changeStatus(task, event) {
           <option v-for="item in TASK_STATUSES" :key="item">{{ item }}</option>
         </select>
       </label>
+
+      <div class="flex flex-wrap items-center gap-2 text-sm sm:col-span-2" aria-live="polite">
+        <span class="font-semibold text-primary">Aktiver Filter:</span>
+        <template v-if="hasActiveFilter">
+          <span v-if="category !== 'Alle'" class="rounded-full bg-accent px-3 py-1 text-xs font-bold text-primary">
+            Kategorie: {{ category }}
+          </span>
+          <span v-if="status !== 'Alle'" class="rounded-full bg-accent px-3 py-1 text-xs font-bold text-primary">
+            Status: {{ status }}
+          </span>
+          <button
+            type="button"
+            class="rounded-lg px-2 py-1 text-xs font-semibold text-muted underline hover:text-primary"
+            @click="resetFilters"
+          >
+            Filter zurücksetzen
+          </button>
+        </template>
+        <span v-else class="text-muted">keiner – alle Aufgaben werden angezeigt</span>
+        <span class="ml-auto text-muted">{{ filteredTasks.length }} von {{ tasks.length }} Aufgaben</span>
+      </div>
     </section>
 
     <p v-if="loading && !tasks.length" class="rounded-2xl border border-border bg-surface p-6 text-muted">
