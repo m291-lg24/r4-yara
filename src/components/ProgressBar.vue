@@ -9,25 +9,31 @@ defineProps({
 
 <template>
   <div>
-    <div class="mb-2 flex items-center justify-between">
-      <span class="text-sm font-medium text-zinc-600">
-        Content-Fortschritt
-      </span>
+    <div class="mb-3 flex items-center justify-between gap-4">
+      <div>
+        <p class="text-sm font-semibold text-primary">
+          Content-Fortschritt
+        </p>
 
-      <span class="text-xl font-bold text-primary">
+        <p class="mt-1 text-xs text-zinc-500">
+          Fast geschafft. Plane die letzten Inhalte.
+        </p>
+      </div>
+
+      <span class="text-2xl font-bold text-primary">
         {{ value }} %
       </span>
     </div>
 
     <div
-      class="h-3 overflow-hidden rounded-full bg-zinc-200"
+      class="h-3 w-full overflow-hidden rounded-full bg-zinc-200"
       role="progressbar"
       :aria-valuenow="value"
       aria-valuemin="0"
       aria-valuemax="100"
     >
       <div
-        class="h-full rounded-full bg-accent transition-all duration-300"
+        class="h-full rounded-full bg-accent transition-[width] duration-300"
         :style="{ width: `${value}%` }"
       />
     </div>
